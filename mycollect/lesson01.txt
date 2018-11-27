@@ -1,0 +1,182 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# author:fei time:2018/11/26
+
+# python基本数据类型包括：数字类型、布尔值、字符串、列表、元祖、字典、集合
+# 一、如何查看数据类型：
+# 1.type：
+temp = "sophie"
+t = type(temp)
+print(t)  # <class 'str'>
+
+# ctrl+鼠标左键单击str，找到str类下的所有方法
+
+# 2.help，type
+help(type(temp))  # 查看类下所有方法，运行后直接显示在控制台
+
+# 3.dir
+print(dir(temp))  # 运行后直接显示在控制台str类下的所有方法名称
+
+# 4.查看类下某特定方法
+print(temp.upper())  # SOPHIE
+# ctrl+鼠标左键单击upper()，自动定位到upper()方法
+
+# 二、数字类型:包括三类，整数、浮点数、复数
+# 1.整数类型(int)
+a = 10  # 十进制,每一位上都是0-9
+print('a的类型为:', type(a))  # a的类型为: <class 'int'>
+
+b = 0b1101  # 二进制，每一位上都是0-1
+print('b的类型为:', type(b))  # b的类型为: <class 'int'>
+
+c = 0o57  # 八进制，每一位上都是0-7
+print("c的类型为：", type(c))  # c的类型为： <class 'int'>
+
+d = 0xa5c  # 16进制，每一位上都是0-9,a-f
+print("d的类型为：", type(d))  # d的类型为： <class 'int'>
+
+# 32位机器长度限制：-2**31~2**31-1；64位机器长度限制：-2**63~2**63-1
+
+# 2.浮点数（float）：不精确
+a = 5
+b = 5.0
+print(type(a))  # <class 'int'>
+print(type(b))  # <class 'float'>
+
+c = 9.5e-2
+print(type(c))  # <class 'float'>
+
+# 拓展,浮点数在计算机处理里是不精确的
+s = 0.1 + 0.2
+print(s)  # 0.30000000000000004
+print(type(s))
+
+import decimal
+
+a = "3.1415926565656565656565656565656"
+a = decimal.Decimal(a)
+decimal.getcontext().prec = 10  # 精度位数
+print(a)
+
+a = decimal.Decimal("0.1")  # 数字型的字符串
+b = decimal.Decimal("0.2")
+decimal.getcontext().prec = 10  # 精度位数
+print(a + b)  # 0.3
+
+# 3.复数:complex
+# x**2 = -1，x的值作为j单位
+a = 12.3 + 5j
+print(type(a))  # <class 'complex'>
+
+# 三种数字类型的相互转换
+a = "2"
+b = 2
+c = 3.14
+print(type(a))  # <class 'str'>
+print(type(b))  # <class 'int'>
+print(type(c))  # <class 'float'>
+
+# 转换为整数
+d = int(a)  # str--->int
+e = int(c)  # float--->int
+print(d)  # 2
+print(e)  # 3
+print(type(d))  # <class 'int'>
+print(type(e))  # <class 'int'>
+
+# 转换为浮点数
+f = float(a)
+g = float(b)
+print(f)  # 2.0
+print(g)  # 2.0
+
+# 转换为复数，complex
+# h = complex(b, a)   # 两个参数时，前后都不允许是字符串，否则报错
+h = complex(b, c)
+print(h)  # (2+3.14j)
+j = complex(a)  # (2+0j)单参数可以传字符串类型的数字
+print(j)
+
+s = 0.3 + 0.2
+print(s)
+
+# 三、布尔值：bool
+# 简单举例
+a = 1
+b = 0
+print(a)
+print(bool(a))  # True
+print(bool(b))  # False
+
+# bool值为false值有哪些
+c = None
+e = False
+f = 0
+g = 0.0
+h = 0 + 0j
+i = ""
+d = "None"
+print(bool(c))  # False
+print(bool(d))  # True
+print(bool(e))  # False
+print(bool(f))  # False
+print(bool(g))  # False
+print(bool(h))  # False
+print(bool(i))  # False
+
+
+# 四、字符串：单引号、双引号、三引号，字符的序列表示
+# def capitalize(self):  # real signature unknown; restored from __doc__
+#     """
+#     S.capitalize() -> str   # 对S变量使用capitalize()方法后返回一个str类型
+#
+#     Return a capitalized version of S, i.e. make the first character
+#     have upper case and the rest lower case.  # 将S变量的首字母大写，其他字母小写并返回
+#     """
+#     return ""
+
+temp = "sophie,Hello"
+# print(temp.capitalize())    # Sophie,hello
+# print(temp.casefold())  # sophie,hello
+
+print(temp.center(15))  # sophie,Hello
+print(temp.center(15, "-"))  # --sophie,Hello-
+
+# 字符串的常用功能
+# 索引
+S = "hello,TZ"
+print(S[0])
+print(S[-8])
+
+# 长度，len（）
+print(len(S))
+
+# 切片S[0:2]:包前不包后
+print(S[0:2])
+print(S[:2])
+print(S[0:-3])  # hello
+print(S[:-3])  # hello
+print(S[-3:])   # ,TZ
+print(S[-4:-1])  # o,T
+
+
+
+# 移除空白strip（）left right
+S = "  hello,TZ "
+print(S)
+print(S.lstrip())   # 移除左边空白
+print(S.rstrip())   # 移除右边空白
+print(S.strip())    # 移出两边空白
+S = "hello,TZ"
+print(S.rstrip("Z"))
+
+# 分割split（）
+# S.split()
+S = "hello,TZ"
+print(S.split(","))  # ['hello', 'TZ']
+print(S.split())  # ['hello,TZ']
+print(S.split("l", 1))  # ['he', 'lo,TZ']
+print(S.split("l", 2))  # ['he', '', 'o,TZ']
+
+S = "hello"
+print(S[::-1])  # olleh

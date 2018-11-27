@@ -85,7 +85,10 @@ print(S[0], S[1], S[2], S[3], S[4], S[5], S[6], S[7], S[8])
 print(S[-1], S[-2], S[-3], S[-4], S[-5], S[-6], S[-7], S[-8])
 
 print("切片：")
-print(S[0:2])
+print(S[0:6])
+print(S[6:0:-1])
+S = "hello"
+print(S[::-1])  # olleh
 
 # 移除
 
