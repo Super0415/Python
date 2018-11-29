@@ -32,12 +32,11 @@ print(c, "转换为布尔型：", bool(c))
 print(d, "转换为布尔型：", bool(d))
 print("2.自定义一个字符串（eg：a = “hello,world!”），用切片的方式进行逆序")
 Test = "hello,world!"
-print(Test)
-print(Test[0:12:2])
-print(Test[:])
+print("顺序输出：", Test[:])
+print("顺序输出：", Test[0:12:1])
 # print(Test[0:12:-1])  # -1 此处不仅输出反序，前两位输入也相反
-print(Test[-1:-13:-1])
-print(Test[::-1])
+print("逆序输出：", Test[-1:-13:-1])
+print("逆序输出：", Test[::-1])
 print("3.有一个时间形式(eg: 20180929),要求从这个格式中得到年、月、日")
 Time = "20180929"
 print("时间形式为：", Time)
