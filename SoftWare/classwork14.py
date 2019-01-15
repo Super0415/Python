@@ -191,5 +191,117 @@
 #     else:
 #         print("用户名重复，注册失败！")
 #
-#
+
+print("5.设计一个拥有注册和登录功能的小程序，要求：注册完成后提示注册的账号和密码， 登录成功后，提示欢迎登录，账号或者密码不正确时，返回相应提示。","\n",
+      "**********考查知识点：函数的定义，参数和变量的使用。**********")
+
+class User_system():
+    def __init__(self):
+        self.name = None
+        self.password = None
+        self.option = None
+
+    def HeadContent(self):
+        print("#####################################################\n"
+              "####                                             ####\n"
+              "####               欢迎进入小程序                ####\n"
+              "#####################################################")
+
+    def sys_option(self):
+        option = input("请输入服务项(0-注册；1-登陆；其他-待开发)：")
+        try:
+            if int(option) == 0:
+                self.option = option
+            elif int(option) == 1:
+                self.option = option
+            else:
+                print("待开发，请重新选择...")
+                self.sys_option()
+        except:
+            print("待开发，请重新选择...")
+            self.sys_option()
+
+    def login(self):
+        name = input("请输入登陆用户名：")
+        self.name = name
+        if self.checkname(self.name) is True:
+            print("存在此用户名！")
+            password = input("请输入登陆密码：")
+            self.password = password
+            if self.checkpassword(self.password) is True:
+                print("登陆成功！")
+            else:
+                print("密码错误！")
+                self.login()
+        else:
+            print("不存在此用户！")
+            self.login()
+
+    def register(self):
+        name = input("请输入注册用户名：")
+        self.name = name
+        if self.checkname(self.name) is True:
+            print("用户名重复！")
+            self.register()
+        else:
+            password = input("请输入注册密码：")
+            if self.saveinfo() is True:
+                print("注册成功！！")
+                      # "注册用户名为：{}，注册密码为：{}".format(self.name, self.password))
+            else:
+                print("保存失败！")
+
+    def saveinfo(self):
+        try:
+            with open("UserInfo.txt", "a", encoding="utf-8") as filename:
+                info = [self.name,self.password]
+                filename.writelines(info)
+
+                filename.write(self.name)
+                filename.flush()
+                filename.write(" ")
+                filename.flush()
+                filename.write(self.password)
+                filename.flush()
+                filename.write("\n")
+                filename.flush()
+                return True
+        except:
+            return False
+
+    def checkname(self, name):
+        truefalse = False
+        with open("UserInfo.txt", "r", encoding="utf-8") as file:
+            line = file.readline()
+            while line:
+                if line.split(" ")[0] == name:
+                    truefalse = True
+                line = file.readline()
+        return truefalse
+
+    def checkpassword(self, password):
+        truefalse = False
+        with open("UserInfo.txt", "r", encoding="utf-8") as file:
+            line = file.readline()
+            password_file = line.split(" ")[1].split("\n")[0]
+            if password_file == password:
+                truefalse = True
+            line = file.readline()
+        return truefalse
+
+    def system_state(self):
+        self.HeadContent()
+        self.sys_option()
+        if int(self.option) == 0:
+            self.register()
+        elif int(self.option) == 1:
+            self.login()
+        else:
+            print("无此功能项")
+
+
+Sys = User_system()
+Sys.system_state()
+
+
 
