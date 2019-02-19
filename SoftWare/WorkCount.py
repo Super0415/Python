@@ -2,7 +2,7 @@
 # encoding: utf-8
 # file: WorkCount.py
 # author: Fengzc
-# time: 2019/1/4 9:13
+# time: 2019/1/4 9:1
 
 def SF_OUM_TO_ADC():
     num = 0
