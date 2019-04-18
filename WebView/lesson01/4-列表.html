@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background: #2f0099;
+            display: inline;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>无序列表ul </h2>
+    <ul type="NONE">
+        <li>
+            <div>1</div>
+            <div>2</div>
+        </li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <!--ul>li{$}*4
+    $ 可表示为：
+    - disc 默认 小黑圆点
+    - circle 圆圈
+    - square 小方框
+    -->
+    <ul type="circle">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <h2>有序列表ol</h2>
+    <ol>
+        <li>自动排序</li>
+        <li>自动排序</li>
+        <li>自动排序</li>
+        <li>自动排序</li>
+    </ol>
+    <!--ol>li{自动排序}*4-->
+    <ol type="i">
+        <li>自动排序</li>
+        <li>自动排序</li>
+        <li>自动排序</li>
+        <li>自动排序</li>
+    </ol>
+
+    <h2>自定义列表dl</h2>
+    <dl>
+        <!--dt dd 格式不一样-->
+        <dt>前端</dt>
+        <dd>前端</dd>
+        <dd>html</dd>
+        <dd>css</dd>
+        <dd>js</dd>
+
+    </dl>
+</body>
+</html>
